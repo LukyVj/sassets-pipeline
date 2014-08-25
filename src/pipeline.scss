@@ -1,0 +1,33 @@
+// SASSETS-PIPELINE
+// A path helper concept for sass 
+// 08/25/2014 ~ @LukyVj
+
+$root-level: '../';
+$assets-folder: $root-level + 'asset/';
+
+$styles: ' '; // Here
+$scripts: 'scripts/';
+$fonts: 'fonts/';
+
+$css-pipe:  $styles ;
+$font-pipe: $assets-folder + $fonts ;
+$img-pipe: $assets-folder + $images ;
+
+
+
+
+@mixin font-pipe($name){
+  @font-face {
+      font-family: $name;
+      src: url($font-pipe + $name + '.eot?#iefix') format('embedded-opentype'), 
+          url($font-pipe + $name + '.woff') format('woff'), 
+          url($font-pipe + $name + '.ttf')  format('truetype'),
+          url($font-pipe + $name + '.svg#svg'+ $name) format('svg');
+  }	
+}
+
+
+
+@mixin img-pipe($name, $format){
+  background: url($img-pipe + $name + '.' + $format);
+} 
